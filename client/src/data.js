@@ -20,12 +20,14 @@ export const categories = [
     {
         id: 1,
         img: "https://i.ibb.co/mqyHvFv/image.png",
-        title: "FOR HIM"
+        title: "FOR HIM",
+        cat:"forhim"
     },
     {
         id: 2,
         img: "https://i.ibb.co/xXn7g6f/image.png",
-        title: "FOR HER"
+        title: "FOR HER",
+        cat:"forher"
     },
 ];
 
