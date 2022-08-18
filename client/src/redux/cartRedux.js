@@ -13,6 +13,13 @@ const cartSlice = createSlice({
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.quantity;
     },
+    INCREASE_QUANTITY: (state, action) => {
+      state.numberCart++
+      state.Carts[action.payload].quantity++;
+      return {
+        ...state
+      }
+    }
   },
 });
 
