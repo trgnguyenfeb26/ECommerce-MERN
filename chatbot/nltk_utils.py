@@ -1,11 +1,11 @@
 import nltk
 import numpy as np
-import torch
+from underthesea import word_tokenize
 
 stremer = nltk.stem.PorterStemmer()
 
 def tokenize(sentence):
-    return nltk.word_tokenize(sentence)
+    return word_tokenize(sentence)
 
 def stem(word):
     return stremer.stem(word.lower())
@@ -18,3 +18,8 @@ def bag_of_words(tokenized_sentence, all_words):
             bag[idx] = 1.0
 
     return bag
+
+# text = "Tôi muốn đặt một vé máy bay đi Hà Nội"
+# tokenized_text = tokenize(text)
+# stem_words = [stem(w) for w in tokenized_text]
+# print(stem_words)

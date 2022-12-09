@@ -2,14 +2,14 @@ import random
 import time
 import json
 import torch
-from model import NeuralNet
+from model.intents_model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
 import fastapi
 import uvicorn
-from models.message import Message
+from model_api.message import Message
 
 #device = torch.device('cpu')
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cudu:0' if torch.cuda.is_available() else 'cpu')
 with open('intents.json', 'r') as f:
     intents = json.load(f)
 
@@ -28,11 +28,9 @@ model.load_state_dict(model_state)
 model.eval()
 
 app = fastapi.FastAPI()
-
-
 @app.post("/api/chatbot")
 async def get_response(messenge: Message):
-
+    
     if messenge is None or messenge.msg == "quit":
         return {"response": "Bye", "status": "success"}
     try:
@@ -61,7 +59,7 @@ async def get_response(messenge: Message):
             print(result)
     except:
         return {"response": "Oops! Something went wrong!", "status": "failed"}
-
+    
     return {"response": result, "status": "success"}
 
 if __name__ == '__main__':
